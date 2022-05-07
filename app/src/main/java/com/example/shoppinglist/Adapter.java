@@ -33,9 +33,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
-        int resource = shoppingList.get(position).getImageview1();
-        String name = shoppingList.get(position).getTextview();
-        String detail = shoppingList.get(position).getTextview3();
+        int resource = shoppingList.get(position).getImage();
+        String name = shoppingList.get(position).getName();
+        String detail = shoppingList.get(position).getDetail();
         String line = shoppingList.get(position).getDivider();
         
         holder.setData(resource, name, detail, line);

@@ -14,15 +14,15 @@ public class ShoppingList  {
        this.divider = divider;
     }
 
-    public int getImageview1() {
+    public int getImage() {
         return imageview1;
     }
 
-    public String getTextview() {
+    public String getName() {
         return textview;
     }
 
-    public String getTextview3() {
+    public String getDetail() {
         return textview3;
     }
 

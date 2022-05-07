@@ -14,7 +14,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    LinearLayoutManager layoutManager;
     List<ShoppingList> shoppingListList;
     Adapter adapter;
     private Adapter.RecyclerViewClickListener listener;
@@ -23,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerView = findViewById(R.id.recyclerView);
 
         initData();
         initRecyclerView();
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         shoppingListList.add(new ShoppingList(R.drawable.apple, "Apple", "5 pieces", "____________________________"));
         shoppingListList.add(new ShoppingList(R.drawable.chocolate, "Chocolate", "Nougat", "____________________________"));
         shoppingListList.add(new ShoppingList(R.drawable.water, "Water", "3 bottles", "____________________________"));
+        shoppingListList.add(new ShoppingList(R.drawable.coffee, "Coffee", "500g", "____________________________"));
+        shoppingListList.add(new ShoppingList(R.drawable.salad, "Salad", "1 piece", "____________________________"));
 
     }
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         setOnClickListener();
 
-
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         adapter = new Adapter(shoppingListList, listener);
         recyclerView.setAdapter(adapter);
@@ -58,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v, int position) {
                 Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
-                intent.putExtra("productname", shoppingListList.get(position).getTextview());
+                intent.putExtra("name", shoppingListList.get(position).getName());
+                intent.putExtra("details", shoppingListList.get(position).getDetail());
+                intent.putExtra("imageInt", shoppingListList.get(position).getImage());
                 startActivity(intent);
             }
         };
